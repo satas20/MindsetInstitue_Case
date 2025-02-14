@@ -1,0 +1,27 @@
+{
+  "name": "customer-service",
+  "version": "1.0.0",
+  "description": "Customer Service for CRM Microservices",
+  "main": "src/app.ts",
+  "scripts": {
+    "start": "ts-node src/app.ts",
+    "test": "jest"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.10.9",
+    "jsonwebtoken": "^8.5.1"
+  },
+  "devDependencies": {
+    "typescript": "^4.1.2",
+    "ts-node": "^9.0.0",
+    "jest": "^26.6.3",
+    "@types/jest": "^26.0.0",
+    "@types/node": "^14.14.31",
+    "@types/express": "^4.17.8"
+  },
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "license": "MIT"
+}

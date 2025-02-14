@@ -1,0 +1,52 @@
+version: '3.8'
+
+services:
+  api-gateway:
+    build:
+      context: ./api-gateway
+    ports:
+      - "3000:3000"
+    depends_on:
+      - user-service
+      - customer-service
+      - sales-service
+
+  user-service:
+    build:
+      context: ./user-service
+    ports:
+      - "3001:3000"
+    environment:
+      - DATABASE_URL=mongodb://mongo:27017/userdb
+    depends_on:
+      - mongo
+
+  customer-service:
+    build:
+      context: ./customer-service
+    ports:
+      - "3002:3000"
+    environment:
+      - DATABASE_URL=mongodb://mongo:27017/customerdb
+    depends_on:
+      - mongo
+
+  sales-service:
+    build:
+      context: ./sales-service
+    ports:
+      - "3003:3000"
+    environment:
+      - DATABASE_URL=mongodb://mongo:27017/salesdb
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:
